@@ -38,3 +38,10 @@ html_theme_options = {
 
 # includes SWAN logo
 html_logo = html_favicon = '_images/swanlogo.png'
+
+# edit on GitHub
+html_context = dict()
+html_context['display_github'] = True
+html_context['github_user'] = 'delftwaves'
+html_context['github_repo'] = 'swan-docs'
+html_context['github_version'] = 'main/docs/'
