@@ -1,2 +1,0 @@
-# swan-docs
-SWAN documentation
