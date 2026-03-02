@@ -4,24 +4,38 @@
    contain the root `toctree` directive.
 
 SWAN model documentation
-=========================
+========================
 
-Nieuw paragraaf
----------------
-
-Dit is een test om te kijken of we online de Read-the-Docs documentaties kunnen creeeren en bekijken.
-Past iets aan of breidt het uit... zodat de workflow aan het werk wordt gezet.
-
-Ik heb het gezegd.
+SWAN is a third-generation wave model, developed at Delft University of Technology, that computes random, short-crested wind-generated waves in coastal regions and inland waters.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :hidden:
-   :caption: Introduction:
+   :caption: introduction
 
    intro/introduction
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :hidden:
-   :caption: Getting started:
+   :caption: getting started
+
+   getting_started/install
+   getting_started/run
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: user manual
+
+   introduction <https://swanmodel.sourceforge.io/online_doc/swanuse/node2.html>
+   input / output files <https://swanmodel.sourceforge.io/online_doc/swanuse/node15.html>
+   description of input commands <https://swanmodel.sourceforge.io/online_doc/swanuse/node19.html>
+   reference to commands <https://swanmodel.sourceforge.io/online_doc/swanuse/node52.html>
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: theory
+
+   scientific/technical documentation <https://swanmodel.sourceforge.io/online_doc/swantech/swantech.html>

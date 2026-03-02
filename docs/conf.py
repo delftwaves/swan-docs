@@ -29,12 +29,6 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = 'sphinx_rtd_theme'
-html_static_path = ['_static']
-html_theme_options = {
-    "source_repository": "https://github.com/delftwaves/swan-docs/",
-    "source_branch": "main",
-    "source_directory": "docs/",
-}
 
 # includes SWAN logo
 html_logo = html_favicon = '_images/swanlogo.png'
