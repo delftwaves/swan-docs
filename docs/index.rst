@@ -31,6 +31,7 @@ SWAN is a third-generation wave model, developed at Delft University of Technolo
    introduction <https://swanmodel.sourceforge.io/online_doc/swanuse/node2.html>
    input / output files <https://swanmodel.sourceforge.io/online_doc/swanuse/node15.html>
    description of input commands <https://swanmodel.sourceforge.io/online_doc/swanuse/node19.html>
+   SWAN physics settings <https://swanmodel.sourceforge.io/settings/settings.htm>
    reference to commands <https://swanmodel.sourceforge.io/online_doc/swanuse/node52.html>
 
 .. toctree::
