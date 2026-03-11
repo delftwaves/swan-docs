@@ -151,7 +151,11 @@ Open the terminal and enter
    export PATH=$PATH:$HOME/wavemodels/swan
 
 You can check the new value of ``PATH`` by echoing it: ``echo $PATH``. However, to set this permanently, you need to add it to
-your ``~/.bash_profile`` or ``~/.bashrc`` file.
+your ``~/.bash_profile`` (or ``~/.bashrc`` file), as follows
+
+.. code-block:: bash
+
+   echo export PATH=$PATH:$HOME/wavemodels/swan >> ~/.bash_profile
 
 options for configuring SWAN
 ----------------------------

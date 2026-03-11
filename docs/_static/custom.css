@@ -1,0 +1,12 @@
+/* code block background */
+.rst-content div[class^="highlight"],
+.rst-content pre.literal-block {
+    background-color: ivory;
+    border: 1px solid rgb(255 255 128 / 0.6);
+}
+
+/* copyright invisible */
+div[role=contentinfo] {
+	visibility: hidden;
+	position: relative;
+}
