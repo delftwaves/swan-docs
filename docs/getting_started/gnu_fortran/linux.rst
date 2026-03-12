@@ -155,7 +155,7 @@ your ``~/.bash_profile`` (or ``~/.bashrc`` file), as follows
 
 .. code-block:: bash
 
-   echo export PATH=$PATH:$HOME/wavemodels/swan >> ~/.bash_profile
+   echo export PATH=$PATH:$HOME/wavemodels/swan/bin >> ~/.bash_profile
 
 options for configuring SWAN
 ----------------------------

@@ -117,7 +117,7 @@ You can check the new value of ``PATH`` by echoing it: ``echo $PATH``. However, 
 
 .. code-block:: bash
 
-   echo export PATH=$PATH:$HOME/wavemodels/swan >> ~/.bash_profile
+   echo export PATH=$PATH:$HOME/wavemodels/swan/bin >> ~/.bash_profile
 
 options for configuring SWAN
 ----------------------------
