@@ -96,9 +96,9 @@ will configure SWAN to be installed at ``C:\Program Files\swan``.
    Unfortunately, it's not possible to build SWAN with MPI nor Metis support.
 
    Alternatively, you could consider building with Intel Fortran + MPI; click on this :ref:`page <intelwin>` for details.
+
    Another option is to build SWAN yourself within this `docker container <https://hub.docker.com/r/delftwaves/swan>`_.
    The GNU Fortran compiler and the MPI and Metis libraries are already included in this container.
-
    You can login the container:
 
    .. code-block:: bat
