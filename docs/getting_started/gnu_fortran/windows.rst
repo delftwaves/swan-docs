@@ -105,6 +105,8 @@ will configure SWAN to be installed at ``C:\Program Files\swan``.
 
       docker run --rm -v .:/home/swan -it delftwaves/swan bash
 
+   The base image of this container is Ubuntu 24.04. Thus, consult this :ref:`page <deblin>` for building SWAN.
+
 clean up
 --------
 

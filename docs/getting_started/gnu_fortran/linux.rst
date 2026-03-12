@@ -68,6 +68,8 @@ In that case, install the perl interpreter as follows
 
    sudo dnf install perl
 
+.. _deblin:
+
 Debian-based Linux distributions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
