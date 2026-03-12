@@ -82,11 +82,9 @@ To run SWAN, you need to make sure that this directory is added to your system's
 options for configuring SWAN
 ----------------------------
 
-If desired, the build can be configured by passing one or more options below to ``gmake config``.
+If desired, the build can be configured by passing the following option to ``gmake config``.
 
     ===================  ====================================================================================
-    ``fc=<compiler>``    the Fortran90 compiler to use [default is determined by ``CMake``]
-    ``mpi=on``           enable build of SWAN with MPI [``off`` by default]
     ``prefix=<folder>``  set the installation folder [``%LocalAppData%\Programs\wavemodels\swan`` by default]
     ===================  ====================================================================================
 
@@ -97,6 +95,20 @@ For example, the following command
    gmake config prefix=C:\Program Files\swan
 
 will configure SWAN to be installed at ``C:\Program Files\swan``.
+
+.. note::
+
+   Unfortunately, it's not possible to build SWAN with MPI support nor Metis support.
+
+   Alternatively, you could consider building with Intel Fortran + MPI; click on this :ref:`page <intelwin>` for details.
+   Another option is to build SWAN yourself within this `docker container <https://hub.docker.com/r/delftwaves/swan>`_.
+   The necessary GNU Fortran compiler and MPI and Metis libraries are already included in this container.
+
+   You can login the container:
+
+   .. code-block:: bat
+
+      docker run --rm -v .:/home/swan -it delftwaves/swan bash
 
 clean up
 --------

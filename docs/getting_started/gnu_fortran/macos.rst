@@ -105,12 +105,12 @@ Open a Terminal app, copy the command below to paste into the terminal, and pres
    make install
 
 SWAN is installed at folder ``$HOME/wavemodels/swan`` by default.
-To run SWAN, you need to make sure that this directory is added to your system's ``PATH``.
+To run SWAN, you need to make sure that the ``/bin`` folder in this directory is added to your system's ``PATH``.
 Open the terminal and enter
 
 .. code-block:: bash
 
-   export PATH=$PATH:$HOME/wavemodels/swan
+   export PATH=$PATH:$HOME/wavemodels/swan/bin
 
 You can check the new value of ``PATH`` by echoing it: ``echo $PATH``. However, to set this permanently, you need to add it to your
 ``~/.bash_profile`` (or ``~/.bashrc`` file), as follows
