@@ -165,6 +165,7 @@ If desired, the build can be configured by passing one or more options below to 
     ===================  ==================================================================
     ``fc=<compiler>``    the Fortran90 compiler to use [default is determined by ``CMake``]
     ``mpi=on``           enable build of SWAN with MPI [``off`` by default]
+    ``metis=on``         enable build of SWAN with Metis [``off`` by default]
     ``prefix=<folder>``  set the installation folder [``$HOME/wavemodels/swan by`` default]
     ===================  ==================================================================
 
@@ -175,6 +176,8 @@ For example, the following command
    make config fc=gfortran prefix=/usr/local/swan
 
 will configure SWAN to be built using ``gfortran`` and then install it at ``/usr/local/swan``.
+
+.. _bmpi:
 
 building with MPI support
 -------------------------
@@ -230,6 +233,47 @@ Finally, to install SWAN, run the following command
    make install
 
 SWAN is now ready for high performance computing.
+
+building with Metis support
+---------------------------
+
+SWAN can be compiled with support for Metis to partition an unstructured mesh so that simulations can be carried out on distributed-memory machines.
+For this, an MPI implementation is still required, click :ref:`here <bmpi>` for details.
+
+The actual mesh partitioning implemented in SWAN is the multilevel k-way method
+as explained in the `Metis manual <https://github.com/KarypisLab/METIS/tree/master/manual>`_.
+
+For a proper building, the Metis software package must be installed first on your machine.
+
+On a RPM-based Linux:
+
+.. code-block:: bash
+
+   dnf --enablerepo=devel install metis
+
+and on a Debian-based Linux:
+
+.. code-block:: bash
+
+   sudo apt install libmetis-dev
+
+After Metis has been installed we continue with the build of SWAN. First, configure SWAN:
+
+.. code-block:: bash
+
+   make config fc=mpifort mpi=on metis=on
+
+Next, build SWAN:
+
+.. code-block:: bash
+
+   make
+
+And finally, install SWAN:
+
+.. code-block:: bash
+
+   make install
 
 clean up
 --------
