@@ -2,7 +2,7 @@ pre-compiled binary packages
 ============================
 
 A pre-compiled binary distribution allows quick installation without requiring compilation.
-The SWAN 41.51 binaries are available for the following OS/ARCH:
+The SWAN v41.51 binaries are available for the following OS/ARCH:
 
 - `Windows 11 (AMD64) <https://swanmodel.sourceforge.io/download/zip/SWAN-41.51-Windows.exe>`_
 - `Linux Ubuntu 24.04 LTS (AMD64) <https://swanmodel.sourceforge.io/download/zip/SWAN-41.51-Linux.tar.gz>`_
