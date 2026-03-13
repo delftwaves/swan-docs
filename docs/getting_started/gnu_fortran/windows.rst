@@ -69,11 +69,11 @@ SWAN is installed at folder ``%LocalAppData%\Programs\wavemodels\swan`` by defau
 
    echo %LocalAppData%
 
-To run SWAN, you need to make sure that this directory is added to your system's ``PATH``. Open command prompt and type
+To run SWAN, you need to make sure that the ``\bin`` folder in this directory is added to your system's ``PATH``. Open command prompt and type
 
 .. code-block:: text
 
-   setx path "%path%;%LocalAppData%\Programs\wavemodels\swan"
+   setx path "%path%;%LocalAppData%\Programs\wavemodels\swan\bin"
 
 .. warning::
 
@@ -93,19 +93,9 @@ will configure SWAN to be installed at ``C:\Program Files\swan``.
 
 .. note::
 
-   Unfortunately, it's not possible to build SWAN with MPI nor Metis support.
-
-   Alternatively, you could consider building with Intel Fortran + MPI; click on this :ref:`page <intelwin>` for details.
-
-   Another option is to build SWAN yourself within this `docker container <https://hub.docker.com/r/delftwaves/swan>`_.
-   The GNU Fortran compiler and the MPI and Metis libraries are already included in this container.
-   You can login the container:
-
-   .. code-block:: bat
-
-      docker run --rm -v .:/home/swan -it delftwaves/swan bash
-
-   The base image of this container is Ubuntu 24.04. Thus, consult this :ref:`page <deblin>` for building SWAN.
+   Unfortunately, there is no simple way to build SWAN with MPI support using gfortran.
+   One consideration is to build using :ref:`Intel Fortran + MPI <intelwin>`.
+   Another option is to build within the :ref:`Docker container <indoc>`.
 
 clean up
 --------

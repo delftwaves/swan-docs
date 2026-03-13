@@ -20,3 +20,5 @@ If the installation was successful, you should see a message saying that SWAN ra
 
 To run your own SWAN application, download the official `SWAN docker image <https://hub.docker.com/r/delftwaves/swan>`_ from the Docker Hub repository.
 Like the SWAN source code, this image is distributed under `GNU GPL v3 license <https://gitlab.tudelft.nl/citg/wavemodels/swan/-/blob/main/LICENSE>`_.
+
+Consult this :ref:`page <docrun>` for the various run instructions.

@@ -68,8 +68,6 @@ In that case, install the perl interpreter as follows
 
    sudo dnf install perl
 
-.. _deblin:
-
 Debian-based Linux distributions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -112,6 +110,8 @@ If no error is reported, then the installation was successful.
 
    - The ``CMake`` version must be at least 3.20 or newer.
    - The ``perl`` version is 5 or higher.
+
+.. _instlswn:
 
 installation SWAN
 -----------------
