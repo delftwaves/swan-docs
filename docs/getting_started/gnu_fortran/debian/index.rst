@@ -1,7 +1,7 @@
-macOS
-=====
+install SWAN on Debian-based Linux distributions
+================================================
 
-.. _prerequisitesm:
+.. _prerequisitesld:
 
 prerequisites
 -------------
@@ -14,49 +14,25 @@ The following packages must be installed first:
 - perl
 - git
 
-These packages can be installed using system package managers such as Homebrew, MacPorts and Fink.
-Here, we will use `Homebrew <https://brew.sh>`_.
-You may install Homebrew first (visit its homepage, copy the installation command, open a terminal and paste it into your terminal, and press Enter)
-or update it: ``brew update``.
+These packages can be installed using the package manager ``apt-get``.
 
-With the command ``brew list`` you can check the installed packages (or *formulae*) on your macOS. If desired, upgrade these packages first by
-typing ``brew upgrade``. Below are the instructions for installing the required packages.
-
-First, install GCC (GNU Compiler Collection) that includes ``gfortran`` by opening a terminal (Applications > Utilities and search for the
-Terminal app) and typing the following command
+Open a command line terminal and run the following commands:
 
 .. code-block:: bash
 
-   brew install gcc
+   sudo apt-get -y update
 
-To verify the installation, type ``which gfortran`` in the terminal. It should return a path where ``gfortran`` has been installed.
-On Apple Silicon, the compiler will be installed into the folder ``/opt/homebrew/bin/``, while on an older Intel Mac, it will be
-installed in ``/usr/local/bin``.
-
-Alternatively, type ``gfortran --version`` in the terminal. It should return a version number.
-
-Next, open a terminal and run the following command
+followed by
 
 .. code-block:: bash
 
-   brew install cmake
+   sudo apt-get -y install build-essential git cmake ninja-build gfortran
 
-and then
+.. note::
 
-.. code-block:: bash
+   The ``build-essential`` package installs essential tools and libraries for compiling the source code, including ``gcc`` and ``make``.
 
-   brew install ninja
-
-and finally
-
-.. code-block:: bash
-
-   brew install git
-
-These commands will installed ``CMake``, ``ninja`` and ``git`` on your machine.
-
-Usually, ``perl`` is pre-installed on macOS. This can be checked with the command ``perl -v``.
-Otherwise, you may install it by running the command ``brew install perl``.
+The Linux flavors Debian, Ubuntu and Mint have ``perl`` installed by default.
 
 verify installations
 ~~~~~~~~~~~~~~~~~~~~
@@ -83,6 +59,8 @@ If no error is reported, then the installation was successful.
    - The ``ninja`` version should be at least 1.10.
    - The ``perl`` version is 5 or higher.
 
+.. _instlswn:
+
 installation SWAN
 -----------------
 
@@ -90,11 +68,11 @@ Once the prerequisites are taken care of, installing SWAN on your machine is a f
 
 1. download SWAN
 
-Open a Terminal app, copy the command below to paste into the terminal, and press Enter.
-
 .. code-block:: bash
 
    git clone https://gitlab.tudelft.nl/citg/wavemodels/swan.git && cd swan
+
+Paste this into a shell terminal.
 
 2. configure SWAN
 
@@ -122,12 +100,13 @@ Open the terminal and enter
 
    export PATH=$PATH:$HOME/wavemodels/swan/bin
 
-You can check the new value of ``PATH`` by echoing it: ``echo $PATH``. However, to set this permanently, you need to add it to your
-``~/.bash_profile`` (or ``~/.bashrc`` file), as follows
+You can check the new value of ``PATH`` by echoing it: ``echo $PATH``.
+However, to set this permanently, you need to add it to your ``~/.bashrc``, as follows
 
 .. code-block:: bash
 
-   echo export PATH=$PATH:$HOME/wavemodels/swan/bin >> ~/.bash_profile
+   echo export PATH=$PATH:$HOME/wavemodels/swan/bin >> ~/.bashrc
+   source ~/.bashrc
 
 options for configuring SWAN
 ----------------------------
@@ -138,7 +117,7 @@ If desired, the build can be configured by passing one or more options below to 
     ``fc=<compiler>``    the Fortran90 compiler to use [default is determined by ``CMake``]
     ``mpi=on``           enable build of SWAN with MPI [``off`` by default]
     ``metis=on``         enable build of SWAN with Metis [``off`` by default]
-    ``prefix=<folder>``  set the installation folder [``$HOME/wavemodels/swan`` by default]
+    ``prefix=<folder>``  set the installation folder [``$HOME/wavemodels/swan by`` default]
     ===================  ==================================================================
 
 For example, the following command
@@ -149,7 +128,7 @@ For example, the following command
 
 will configure SWAN to be built using ``gfortran`` and then install it at ``/usr/local/swan``.
 
-.. _bmpim:
+.. _bmpid:
 
 building with MPI support
 -------------------------
@@ -159,14 +138,14 @@ A message passing approach is employed based on the Message Passing Interface (M
 
 Popular implementations are `Open MPI <https://www.open-mpi.org>`_ and `MPICH <https://www.mpich.org>`_.
 The first one is typically offered by the package managers of Linux and macOS and can be combined with GCC such as gfortran.
-The easiest way to install Open MPI is by using the Homebrew package manager.
 
-Before installing Open MPI, make sure that your system is up to date and that GCC has been installed, see :ref:`prerequisites <prerequisitesm>`.
-To install Open MPI, run
+Before installing Open MPI, make sure that your system is up to date and that GCC has been installed, see :ref:`prerequisites <prerequisitesld>`.
+
+To install Open MPI on a Debian-based Linux, run
 
 .. code-block:: bash
 
-   brew install openmpi
+   sudo apt -y install openmpi-bin libopenmpi-dev
 
 To verify whether the installation was successful, run the following command
 
@@ -204,16 +183,19 @@ building with Metis support
 ---------------------------
 
 SWAN can be compiled with support for Metis to partition an unstructured mesh so that simulations can be carried out on distributed-memory machines.
-For this, an MPI implementation is still required, click :ref:`here <bmpim>` for details.
+For this, an MPI implementation is still required, click :ref:`here <bmpid>` for details.
 
 The actual mesh partitioning implemented in SWAN is the multilevel k-way method
 as explained in the `Metis manual <https://github.com/KarypisLab/METIS/tree/master/manual>`_.
 
-For a proper building, the Metis software package must be installed first on your machine, as follows:
+For a proper building, the Metis software package must be installed first on your machine.
+
+On a Debian-based Linux:
 
 .. code-block:: bash
 
-   brew install metis
+   sudo apt -y install libmetis-dev
+   ln -s /usr/lib/x86_64-linux-gnu/libmetis.so /usr/local/lib/libmetis.so
 
 After Metis has been installed we continue with the build of SWAN. First, configure SWAN:
 

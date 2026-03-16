@@ -30,7 +30,10 @@ If each of the above package reports a version number, then the installation was
 .. important::
 
    - The version number of ``CMake`` must be at least 3.20 or newer.
+   - The ``ninja`` version should be at least 1.10.
    - The ``perl`` version is 5 or higher.
+
+In addition to these packages, Git must also be installed. For the installation of **Git for Windows**, please refer to the official `Git page <https://git-scm.com/install/windows>`_.
 
 installation SWAN
 -----------------

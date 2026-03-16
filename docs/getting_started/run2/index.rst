@@ -43,7 +43,7 @@ command in terminal::
 
 where ``container-id`` is the identifier you specify for easy reuse of this container.
 
-The base image of this container is Ubuntu 24.04. Additionally, the GNU Fortran compiler and the MPI libraries are already installed.
+The base image of this container is Ubuntu 24.04. Additionally, the GNU Fortran compiler and the MPI and Metis libraries are already installed.
 Thus, to rebuild SWAN, consult this :ref:`page <instlswn>`.
 
 .. tip::
