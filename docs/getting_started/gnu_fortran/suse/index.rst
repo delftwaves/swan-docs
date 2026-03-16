@@ -1,7 +1,7 @@
-install SWAN on RPM-based Linux distributions
-=============================================
+install SWAN on SUSE Linux
+==========================
 
-.. _prerequisiteslr:
+.. _prerequisitesls:
 
 prerequisites
 -------------
@@ -14,70 +14,21 @@ The following packages must be installed first:
 - perl
 - git
 
-These packages can be installed using the default package manager ``dnf``.
+These packages can be installed using the package manager ``zypper``.
 
-First, update the system
-
-.. code-block:: bash
-
-   sudo dnf -y update
-
-Next, run the following command to install GCC (GNU Compiler Collection) on the system
+Open a command line terminal and run the following commands:
 
 .. code-block:: bash
 
-   sudo dnf -y install gcc
+   sudo zypper update -y
 
-and then ``gfortran``
-
-.. code-block:: bash
-
-   sudo dnf -y install gcc-gfortran
-
-To install ``cmake``, enter
+followed by
 
 .. code-block:: bash
 
-   sudo dnf -y install cmake
+   sudo zypper install -y gcc gcc-fortran cmake ninja git
 
-Finally, install ``ninja`` by running the following command
-
-.. code-block:: bash
-
-   sudo dnf -y install ninja-build
-
-.. warning::
-
-   On AlmaLinux OS 9 and Rocky Linux 9, this command must be preceded by the two commands below:
-
-   .. code-block:: bash
-
-      sudo dnf -y install dnf-plugins-core
-      sudo dnf config-manager --set-enabled crb
-
-   Note that both AlmaLinux 8 and Rocky 8 install an older version of Ninja, namely 1.8.2, while ``CMake`` requires 1.10+ in order to build fortran. So if possible, please upgrade to
-   a higher OS version.
-
-On Oracle Linux 9 ``ninja`` should be installed as follows:
-
-.. code-block:: bash
-
-   sudo dnf --enablerepo=ol9_codeready_builder install ninja-build
-
-Before installing ``perl``, check if it is already present on your Linux distribution, by typing
-
-.. code-block:: bash
-
-   perl -v
-
-If ``perl`` is not installed, the shell reports that this command is not found.
-In that case, install the perl interpreter as follows
-
-.. code-block:: bash
-
-   sudo dnf -y install perl
-
-The same for ``git``. Either verify the installation by typing ``git version`` or install it by running ``sudo dnf -y install git``.
+The package ``perl`` installed by default.
 
 verify installations
 ~~~~~~~~~~~~~~~~~~~~
@@ -171,7 +122,7 @@ For example, the following command
 
 will configure SWAN to be built using ``gfortran`` and then install it at ``/usr/local/swan``.
 
-.. _bmpir:
+.. _bmpis:
 
 building with MPI support
 -------------------------
@@ -182,13 +133,21 @@ A message passing approach is employed based on the Message Passing Interface (M
 Popular implementations are `Open MPI <https://www.open-mpi.org>`_ and `MPICH <https://www.mpich.org>`_.
 The first one is typically offered by the package managers of Linux and macOS and can be combined with GCC such as gfortran.
 
-Before installing Open MPI, make sure that your system is up to date and that GCC has been installed, see :ref:`prerequisites <prerequisiteslr>`.
+Before installing Open MPI, make sure that your system is up to date and that GCC has been installed, see :ref:`prerequisites <prerequisitesls>`.
 
-To install Open MPI on a RPM-based Linux, run
+To install Open MPI on SUSE Linux, run
 
 .. code-block:: bash
 
-   sudo dnf -y install openmpi openmpi-devel
+   sudo zypper install -y openmpi openmpi-devel
+
+and then
+
+.. code-block:: bash
+
+   echo export PATH=$PATH:/usr/lib64/mpi/gcc/openmpi5/bin/ >> ~/.bashrc
+   echo export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64/mpi/gcc/openmpi5/lib64/ >> ~/.bashrc
+   source ~/.bashrc
 
 To verify whether the installation was successful, run the following command
 
@@ -201,17 +160,6 @@ or
 .. code-block:: bash
 
    mpirun --version
-
-.. warning::
-
-   To use the compiler ``mpifort`` and runner ``mpirun`` on AlmaLinux, Rocky Linux and Fedora, you'll need to set up the environment path.
-   Insert the following commands
-
-   .. code-block:: bash
-
-      echo source /etc/profile.d/modules.sh >> ~/.bashrc
-      echo module load mpi/openmpi-$(arch) >> ~/.bashrc
-      source ~/.bashrc
 
 Once Open MPI is operational, we proceed to build SWAN. First, we configure SWAN to be built with support for Open MPI, as follows
 
@@ -237,40 +185,16 @@ building with Metis support
 ---------------------------
 
 SWAN can be compiled with support for Metis to partition an unstructured mesh so that simulations can be carried out on distributed-memory machines.
-For this, an MPI implementation is still required, click :ref:`here <bmpir>` for details.
+For this, an MPI implementation is still required, click :ref:`here <bmpis>` for details.
 
 The actual mesh partitioning implemented in SWAN is the multilevel k-way method
 as explained in the `Metis manual <https://github.com/KarypisLab/METIS/tree/master/manual>`_.
 
 For a proper building, the Metis software package must be installed first on your machine.
 
-On a RPM-based Linux (e.g., Fedora):
-
 .. code-block:: bash
 
-   sudo dnf -y install metis-devel
-
-or, if that does not work (e.g., on Rocky Linux 8), enable the development repository:
-
-.. code-block:: bash
-
-   sudo dnf -y --enablerepo=devel install metis-devel
-
-However, on AlmaLinux 9+ and Rocky 9+ the development packages are moved to the CRB (CodeReady Builder) repo.
-In this case, run the following commands:
-
-.. code-block:: bash
-
-   sudo dnf config-manager --set-enabled crb
-   sudo dnf makecache
-   sudo dnf -y install epel-release
-   sudo dnf -y install metis-devel
-
-On Oracle Linux 9 Metis should be installed as follows:
-
-.. code-block:: bash
-
-   sudo dnf -y install epel-release metis-devel
+   sudo zypper install -y metis-devel
 
 After Metis has been installed we continue with the build of SWAN. First, configure SWAN:
 

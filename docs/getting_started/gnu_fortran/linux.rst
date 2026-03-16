@@ -3,12 +3,27 @@ Linux
 
 The most common Linux distributions are
 
-- **Debian-based Linux** such as Debian, Ubuntu and Mint
-- **RPM-based Linux**, e.g., RHEL, CentOS Stream, Rocky Linux and Fedora
+- Debian-based Linux:
+
+  - Debian
+  - Ubuntu
+  - Mint
+- RPM-based Linux:
+
+  - RHEL
+  - CentOS Stream
+  - AlmaLinux
+  - Rocky Linux
+  - Oracle Linux
+  - Fedora
+- SUSE:
+
+  - SUSE Linux
+  - openSUSE
 
 with which the installation instructions below can be applied.
 
-Check your OS:
+Check your own OS:
 
 .. code-block:: bash
 
@@ -19,3 +34,4 @@ Check your OS:
 
    debian/index
    rhel/index
+   suse/index
