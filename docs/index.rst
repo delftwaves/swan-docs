@@ -8,6 +8,8 @@ SWAN model documentation
 
 SWAN is a third-generation wave model, developed at Delft University of Technology, that computes random, short-crested wind-generated waves in coastal regions and inland waters.
 
+This documentation aims to provide a comprehensive guide on how to use and develop applications with SWAN.
+
 .. toctree::
    :maxdepth: 1
    :hidden:
