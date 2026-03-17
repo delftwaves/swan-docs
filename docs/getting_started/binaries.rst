@@ -16,7 +16,7 @@ The SWAN v41.51 binaries are available for the following OS/ARCH:
    - Be aware that you may run into compatibility issues when another OS version (e.g., Windows 7, 32-bit Windows 10) or
      distro (e.g., Linux Mint, Rocky Linux) is installed on your machine, or another CPU architecture (e.g., i386/i686, x86_64, AMD64, ARMv7, ARM64).
      If this is the case, then :ref:`Docker <docker>` might be a good alternative for you.
-   - The tarball files can be extracted in any folder (``tar xzf SWAN-41.51-<OS>.tar.gz`` with ``OS = Linux`` or ``macOS``)
+   - The tarball file can be extracted in any folder (``tar xzf SWAN-41.51-<OS>.tar.gz`` with ``OS = Linux`` or ``macOS``)
      and has no further installation steps.
      However, do not forget to permanently add the ``/bin`` folder in your installed folder in your ``$PATH`` variable. Open a command line terminal and enter::
 
