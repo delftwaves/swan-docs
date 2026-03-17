@@ -28,7 +28,7 @@ followed by
 
    sudo zypper install -y gcc gcc-fortran cmake ninja git
 
-The package ``perl`` installed by default.
+The package ``perl`` is installed by default.
 
 verify installations
 ~~~~~~~~~~~~~~~~~~~~
