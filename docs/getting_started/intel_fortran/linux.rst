@@ -1,26 +1,37 @@
 Linux
 =====
 
-prerequisites
--------------
+The most common Linux distributions are
 
-RPM-based Linux distributions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Debian-based Linux:
 
-Debian-based Linux distributions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  - Debian
+  - Ubuntu
+  - Mint
+- RPM-based Linux:
 
-verify installations
-~~~~~~~~~~~~~~~~~~~~
+  - RHEL
+  - CentOS Stream
+  - AlmaLinux
+  - Rocky Linux
+  - Oracle Linux
+  - Fedora
+- SUSE:
 
-installation SWAN
------------------
+  - SUSE Linux
+  - openSUSE
 
-options for configuring SWAN
-----------------------------
+with which the installation instructions below can be applied.
 
-building with MPI support
--------------------------
+Check your own OS:
 
-clean up
---------
+.. code-block:: bash
+
+   grep PRETTY_NAME /etc/os-release
+
+.. toctree::
+   :maxdepth: 1
+
+   debian/index
+   rhel/index
+   suse/index

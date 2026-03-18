@@ -6,4 +6,3 @@ installing SWAN using Intel Fortran
 
    windows
    linux
-   macos

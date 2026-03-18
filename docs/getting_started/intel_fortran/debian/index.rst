@@ -1,38 +1,75 @@
 install SWAN on Debian-based Linux distributions
 ================================================
 
-.. _prerequisitesld:
+.. _prerequisitesldi:
 
 prerequisites
 -------------
 
 The following packages must be installed first:
 
-- gfortran
+- gcc
 - cmake
 - ninja
-- perl
 - git
+- perl
+- wget
+- gnupg
+- intel-fortran-essentials
 
-These packages can be installed using the package manager ``apt-get``.
+These packages can be installed using the package manager ``apt``.
 
 Open a command line terminal and run the following commands:
 
 .. code-block:: bash
 
-   sudo apt-get -y update
+   sudo apt -y update
 
 followed by
 
 .. code-block:: bash
 
-   sudo apt-get -y install build-essential git cmake ninja-build gfortran
+   sudo apt -y install build-essential cmake ninja-build git wget gnupg
 
 .. note::
 
    The ``build-essential`` package installs essential tools and libraries for compiling the source code, including ``gcc`` and ``make``.
 
 The Linux flavors Debian, Ubuntu and Mint have ``perl`` installed by default.
+
+The final step is to install the Intel Fortran Essentials package which also includes the MPI libraries. First, set up the Intel repository
+by downloading the key to system keyring:
+
+.. code-block:: bash
+
+   wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB \
+   | gpg --dearmor | sudo tee /usr/share/keyrings/oneapi-archive-keyring.gpg > /dev/null
+
+followed by adding signed entry to apt sources and configure the APT client to use Intel repository:
+
+.. code-block:: bash
+
+   echo "deb [signed-by=/usr/share/keyrings/oneapi-archive-keyring.gpg] https://apt.repos.intel.com/oneapi all main" | sudo tee /etc/apt/sources.list.d/oneAPI.list
+
+Next, update the repository index:
+
+.. code-block:: bash
+
+   sudo apt update
+
+Finally, install the package with the following command:
+
+.. code-block:: bash
+
+   sudo apt -y install intel-fortran-essentials
+
+Let your OS system know where to find the compilers and libraries:
+
+.. code-block:: bash
+
+   echo export INTF=/opt/intel/oneapi >> ~/.bashrc
+   echo "source \$INTF/setvars.sh > /dev/null 2>&1" >> ~/.bashrc
+   source ~/.bashrc
 
 verify installations
 ~~~~~~~~~~~~~~~~~~~~
@@ -41,7 +78,7 @@ Verify the required installations by checking their versions, as follows
 
 .. code-block:: bash
 
-   gfortran --version
+   ifx --version
 
    cmake --version
 
@@ -58,8 +95,6 @@ If no error is reported, then the installation was successful.
    - The ``CMake`` version must be at least 3.20 or newer.
    - The ``ninja`` version should be at least 1.10.
    - The ``perl`` version is 5 or higher.
-
-.. _instlswn:
 
 installation SWAN
 -----------------
@@ -124,11 +159,11 @@ For example, the following command
 
 .. code-block:: bash
 
-   make config fc=gfortran prefix=/usr/local/swan
+   make config fc=ifx prefix=/usr/local/swan
 
-will configure SWAN to be built using ``gfortran`` and then install it at ``/usr/local/swan``.
+will configure SWAN to be built using ``ifx`` and then install it at ``/usr/local/swan``.
 
-.. _bmpid:
+.. _bmpidi:
 
 building with MPI support
 -------------------------
@@ -136,34 +171,18 @@ building with MPI support
 The SWAN source code also supports memory-distributed parallelism for high performance computing applications.
 A message passing approach is employed based on the Message Passing Interface (MPI) standard that enables communication between independent processors.
 
-Popular implementations are `Open MPI <https://www.open-mpi.org>`_ and `MPICH <https://www.mpich.org>`_.
-The first one is typically offered by the package managers of Linux and macOS and can be combined with GCC such as gfortran.
-
-Before installing Open MPI, make sure that your system is up to date and that GCC has been installed, see :ref:`prerequisites <prerequisitesld>`.
-
-To install Open MPI on a Debian-based Linux, run
-
-.. code-block:: bash
-
-   sudo apt -y install openmpi-bin libopenmpi-dev
-
-To verify whether the installation was successful, run the following command
-
-.. code-block:: bash
-
-   ompi_info --version
-
-or
+The Intel Fortran Essentials package also contains the Intel MPI Library.
+This can be checked with the following command:
 
 .. code-block:: bash
 
    mpirun --version
 
-Once Open MPI is operational, we proceed to build SWAN. First, we configure SWAN to be built with support for Open MPI, as follows
+We proceed to build SWAN. First, we configure SWAN to be built with support for MPI, as follows
 
 .. code-block:: bash
 
-   make config fc=mpifort mpi=on
+   make config fc=mpiifx mpi=on
 
 The actual building is done by typing
 
@@ -183,7 +202,7 @@ building with Metis support
 ---------------------------
 
 SWAN can be compiled with support for Metis to partition an unstructured mesh so that simulations can be carried out on distributed-memory machines.
-For this, an MPI implementation is still required, click :ref:`here <bmpid>` for details.
+For this, an MPI implementation is still required, click :ref:`here <bmpidi>` for details.
 
 The actual mesh partitioning implemented in SWAN is the multilevel k-way method
 as explained in the `Metis manual <https://github.com/KarypisLab/METIS/tree/master/manual>`_.
@@ -201,7 +220,7 @@ After Metis has been installed we continue with the build of SWAN. First, config
 
 .. code-block:: bash
 
-   make config fc=mpifort mpi=on metis=on
+   make config fc=mpiifx mpi=on metis=on
 
 Next, build SWAN:
 

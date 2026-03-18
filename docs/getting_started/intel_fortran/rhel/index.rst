@@ -1,38 +1,103 @@
-install SWAN on Debian-based Linux distributions
-================================================
+install SWAN on RPM-based Linux distributions
+=============================================
 
-.. _prerequisitesld:
+.. _prerequisiteslir:
 
 prerequisites
 -------------
 
 The following packages must be installed first:
 
-- gfortran
+- gcc
 - cmake
 - ninja
-- perl
 - git
+- perl
+- intel-fortran-essentials
 
-These packages can be installed using the package manager ``apt-get``.
+These packages can be installed using the default package manager ``dnf``.
 
-Open a command line terminal and run the following commands:
-
-.. code-block:: bash
-
-   sudo apt-get -y update
-
-followed by
+First, update the system
 
 .. code-block:: bash
 
-   sudo apt-get -y install build-essential git cmake ninja-build gfortran
+   sudo dnf -y update
 
-.. note::
+Next, run the following command to install GCC (GNU Compiler Collection) on the system
 
-   The ``build-essential`` package installs essential tools and libraries for compiling the source code, including ``gcc`` and ``make``.
+.. code-block:: bash
 
-The Linux flavors Debian, Ubuntu and Mint have ``perl`` installed by default.
+   sudo dnf -y install gcc
+
+To install ``cmake``, enter
+
+.. code-block:: bash
+
+   sudo dnf -y install cmake
+
+Finally, install ``ninja`` by running the following command
+
+.. code-block:: bash
+
+   sudo dnf -y install ninja-build
+
+.. warning::
+
+   On AlmaLinux OS 9 and Rocky Linux 9, this command must be preceded by the two commands below:
+
+   .. code-block:: bash
+
+      sudo dnf -y install dnf-plugins-core
+      sudo dnf config-manager --set-enabled crb
+
+   Note that both AlmaLinux 8 and Rocky 8 install an older version of Ninja, namely 1.8.2, while ``CMake`` requires 1.10+ in order to build fortran. So if possible, please upgrade to
+   a higher OS version.
+
+On Oracle Linux 9 ``ninja`` should be installed as follows:
+
+.. code-block:: bash
+
+   sudo dnf --enablerepo=ol9_codeready_builder install ninja-build
+
+Install both ``git`` and ``perl`` in the following way:
+
+.. code-block:: bash
+
+   sudo dnf -y install git
+
+The final step is to install the Intel Fortran Essentials package which also includes the MPI libraries. First, create the repository file in the ``/temp`` folder:
+
+.. code-block:: text
+
+   tee > /tmp/oneAPI.repo << EOF
+   [oneAPI]
+   name=Intel(R) oneAPI repository
+   baseurl=https://yum.repos.intel.com/oneapi
+   enabled=1
+   gpgcheck=1
+   repo_gpgcheck=1
+   gpgkey=https://yum.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
+   EOF
+
+Next, move this repo file ``oneAPI.repo`` to the yum configuration folder ``/etc/yum.repos.d``:
+
+.. code-block:: bash
+
+   sudo mv /tmp/oneAPI.repo /etc/yum.repos.d
+
+Finally, install the package with the following command:
+
+.. code-block:: bash
+
+   sudo dnf -y install intel-fortran-essentials
+
+Let your OS system know where to find the compilers and libraries:
+
+.. code-block:: bash
+
+   echo export INTF=/opt/intel/oneapi >> ~/.bashrc
+   echo "source \$INTF/setvars.sh > /dev/null 2>&1" >> ~/.bashrc
+   source ~/.bashrc
 
 verify installations
 ~~~~~~~~~~~~~~~~~~~~
@@ -41,7 +106,7 @@ Verify the required installations by checking their versions, as follows
 
 .. code-block:: bash
 
-   gfortran --version
+   ifx --version
 
    cmake --version
 
@@ -58,8 +123,6 @@ If no error is reported, then the installation was successful.
    - The ``CMake`` version must be at least 3.20 or newer.
    - The ``ninja`` version should be at least 1.10.
    - The ``perl`` version is 5 or higher.
-
-.. _instlswn:
 
 installation SWAN
 -----------------
@@ -124,11 +187,11 @@ For example, the following command
 
 .. code-block:: bash
 
-   make config fc=gfortran prefix=/usr/local/swan
+   make config fc=ifx prefix=/usr/local/swan
 
-will configure SWAN to be built using ``gfortran`` and then install it at ``/usr/local/swan``.
+will configure SWAN to be built using ``ifx`` and then install it at ``/usr/local/swan``.
 
-.. _bmpid:
+.. _bmpiri:
 
 building with MPI support
 -------------------------
@@ -136,34 +199,18 @@ building with MPI support
 The SWAN source code also supports memory-distributed parallelism for high performance computing applications.
 A message passing approach is employed based on the Message Passing Interface (MPI) standard that enables communication between independent processors.
 
-Popular implementations are `Open MPI <https://www.open-mpi.org>`_ and `MPICH <https://www.mpich.org>`_.
-The first one is typically offered by the package managers of Linux and macOS and can be combined with GCC such as gfortran.
-
-Before installing Open MPI, make sure that your system is up to date and that GCC has been installed, see :ref:`prerequisites <prerequisitesld>`.
-
-To install Open MPI on a Debian-based Linux, run
-
-.. code-block:: bash
-
-   sudo apt -y install openmpi-bin libopenmpi-dev
-
-To verify whether the installation was successful, run the following command
-
-.. code-block:: bash
-
-   ompi_info --version
-
-or
+The Intel Fortran Essentials package also contains the Intel MPI Library.
+This can be checked with the following command:
 
 .. code-block:: bash
 
    mpirun --version
 
-Once Open MPI is operational, we proceed to build SWAN. First, we configure SWAN to be built with support for Open MPI, as follows
+We proceed to build SWAN. First, we configure SWAN to be built with support for MPI, as follows
 
 .. code-block:: bash
 
-   make config fc=mpifort mpi=on
+   make config fc=mpiifx mpi=on
 
 The actual building is done by typing
 
@@ -183,25 +230,46 @@ building with Metis support
 ---------------------------
 
 SWAN can be compiled with support for Metis to partition an unstructured mesh so that simulations can be carried out on distributed-memory machines.
-For this, an MPI implementation is still required, click :ref:`here <bmpid>` for details.
+For this, an MPI implementation is still required, click :ref:`here <bmpiri>` for details.
 
 The actual mesh partitioning implemented in SWAN is the multilevel k-way method
 as explained in the `Metis manual <https://github.com/KarypisLab/METIS/tree/master/manual>`_.
 
 For a proper building, the Metis software package must be installed first on your machine.
 
-On a Debian-based Linux:
+On a RPM-based Linux (e.g., Fedora):
 
 .. code-block:: bash
 
-   sudo apt -y install libmetis-dev
-   sudo ln -s /usr/lib/x86_64-linux-gnu/libmetis.so /usr/local/lib/libmetis.so
+   sudo dnf -y install metis-devel
+
+or, if that does not work (e.g., on Rocky Linux 8), enable the development repository:
+
+.. code-block:: bash
+
+   sudo dnf -y --enablerepo=devel install metis-devel
+
+However, on AlmaLinux 9+ and Rocky 9+ the development packages are moved to the CRB (CodeReady Builder) repo.
+In this case, run the following commands:
+
+.. code-block:: bash
+
+   sudo dnf config-manager --set-enabled crb
+   sudo dnf makecache
+   sudo dnf -y install epel-release
+   sudo dnf -y install metis-devel
+
+On Oracle Linux 9 Metis should be installed as follows:
+
+.. code-block:: bash
+
+   sudo dnf -y install epel-release metis-devel
 
 After Metis has been installed we continue with the build of SWAN. First, configure SWAN:
 
 .. code-block:: bash
 
-   make config fc=mpifort mpi=on metis=on
+   make config fc=mpiifx mpi=on metis=on
 
 Next, build SWAN:
 
