@@ -65,6 +65,12 @@ Finally, install the package with the following command:
 
       sudo sh ./intel-fortran-essentials-2025.3.1.26_offline.sh -a --silent --cli --eula accept
 
+   .. note::
+
+      This installs version 2025.3.1 of Intel Fortran and is not necessarily the latest version.
+      Check this `page <https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit-download.html?packages=fortran-essentials&fortran-essentials-os=linux&fortran-essentials-lin=offline>`_
+      to get the latest version.
+
 Let your OS system know where to find the compilers and libraries:
 
 .. code-block:: bash
