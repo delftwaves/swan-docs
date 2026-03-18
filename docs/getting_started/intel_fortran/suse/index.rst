@@ -135,13 +135,6 @@ Open the terminal and enter
 
 .. code-block:: bash
 
-   export PATH=$PATH:$HOME/wavemodels/swan/bin
-
-You can check the new value of ``PATH`` by echoing it: ``echo $PATH``.
-However, to set this permanently, you need to add it to your ``~/.bashrc``, as follows
-
-.. code-block:: bash
-
    echo export PATH=$PATH:$HOME/wavemodels/swan/bin >> ~/.bashrc
    source ~/.bashrc
 
