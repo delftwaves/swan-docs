@@ -56,7 +56,7 @@ Run the VS Build Tools installer and ensure you have selected the **Desktop deve
 
    vs_buildtools.exe
 
-This might take a while. After installation, the following environment variable must be set permanently:
+This might take a while. After completing installation of VS Build Tools, set the following environment variable permanently:
 
 .. code-block:: text
 
@@ -72,7 +72,7 @@ Next, run the Intel Fortran Essentials installer:
 
    intel-fortran-essentials-2025.3.1.25_offline.exe
 
-Follow the instruction steps and complete the installation. This might take a while.
+Follow the instruction steps to complete the successful installation. This might take a while.
 
 .. note::
 
