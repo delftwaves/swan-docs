@@ -33,7 +33,7 @@ If each of the above package reports a version number, then the installation was
    - The ``ninja`` version should be at least 1.10.
    - The ``perl`` version is 5 or higher.
 
-In addition to these packages, Git must also be installed. For the installation of **Git for Windows**, please refer to the official `Git page <https://git-scm.com/install/windows>`_.
+In addition to these packages, Git must also be installed. For the installation, please refer to the official `Git for Windows website <https://gitforwindows.org>`_.
 
 installation SWAN
 -----------------

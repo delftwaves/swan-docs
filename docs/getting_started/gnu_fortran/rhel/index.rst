@@ -160,7 +160,7 @@ If desired, the build can be configured by passing one or more options below to 
     ``fc=<compiler>``    the Fortran90 compiler to use [default is determined by ``CMake``]
     ``mpi=on``           enable build of SWAN with MPI [``off`` by default]
     ``metis=on``         enable build of SWAN with Metis [``off`` by default]
-    ``prefix=<folder>``  set the installation folder [``$HOME/wavemodels/swan by`` default]
+    ``prefix=<folder>``  set the installation folder [``$HOME/wavemodels/swan`` by default]
     ===================  ==================================================================
 
 For example, the following command
