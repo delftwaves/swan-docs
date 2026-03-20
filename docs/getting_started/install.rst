@@ -13,3 +13,4 @@ Alternatively, you can run SWAN immediately using a docker container. Especially
    docker
    binaries
    source
+   dblue
