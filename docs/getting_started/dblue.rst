@@ -5,7 +5,7 @@ prerequisites
 -------------
 
 Click `here <https://doc.dhpc.tudelft.nl/delftblue/crash-course/>`_ for background information, how the cluster works, and instructions to access the cluster.
-Staff, postdocs, and PhD students have access granted, so no action is needed. Master students need to request access.
+Staff, postdocs, and PhD students have access granted, so no action is needed. MSc students need to request access.
 
 After login, load the following modules:
 
