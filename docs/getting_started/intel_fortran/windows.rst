@@ -37,8 +37,7 @@ If each of the above package reports a version number, then the installation was
 In addition to these packages, ``git`` and ``curl`` must also be installed. For the installation, please refer to the official `Git for Windows website <https://gitforwindows.org>`_.
 
 The final step is to install the Intel Fortran Essentials package which also includes the MPI libraries. The installation method here is the
-`offline installer <https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit-download.html?packages=fortran-essentials&fortran-essentials-os=windows&fortran-essentials-win=offline>`_.
-This installer can be downloaded by entering the following command in a Windows command prompt:
+offline installer. This installer can be downloaded by entering the following command in a Windows command prompt:
 
 .. code-block:: text
 
@@ -77,7 +76,7 @@ Follow the instruction steps to complete the successful installation. This might
 .. note::
 
    This installs version 2025.3.1 of Intel Fortran and is not necessarily the latest version.
-   Check this `page <https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit-download.html?packages=fortran-essentials&fortran-essentials-os=windows&fortran-essentials-win=offline>`_
+   Check this `page <https://www.intel.com/content/www/us/en/developer/tools/oneapi/fortran-compiler-download.html?operatingsystem=windows&distribution-windows=offline>`_
    to get the latest version.
 
 Finally, we check whether the installation was successful.

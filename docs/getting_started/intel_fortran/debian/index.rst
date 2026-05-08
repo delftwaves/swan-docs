@@ -63,6 +63,13 @@ Finally, install the package with the following command:
 
    sudo apt -y install intel-fortran-essentials
 
+Make sure that we are going to use the correct version 2025.3:
+
+.. code-block:: bash
+
+   sudo rm /opt/intel/oneapi/compiler/latest
+   sudo ln -s /opt/intel/oneapi/compiler/2025.3 /opt/intel/oneapi/compiler/latest
+
 Let your OS system know where to find the compilers and libraries:
 
 .. code-block:: bash
