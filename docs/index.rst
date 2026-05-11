@@ -42,3 +42,11 @@ This documentation aims to provide a comprehensive guide on how to use and devel
    :caption: theory
 
    scientific/technical documentation <https://swanmodel.sourceforge.io/online_doc/swantech/swantech.html>
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: useful files
+
+   swaninit <https://swanmodel.sourceforge.io/online_doc/swanimp/node19.html>
+   swan.edt <https://swanmodel.sourceforge.io/online_doc/swanuse/node49.html>
