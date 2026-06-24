@@ -172,7 +172,7 @@ Let us check the installation of Intel MPI first:
 
    mpirun --version
 
-We proceed to build SWAN. First, we configure SWAN to be built with support for MPI, as follows
+If successful, then we proceed to build SWAN. First, we configure SWAN to be built with support for MPI, as follows
 
 .. code-block:: bash
 
