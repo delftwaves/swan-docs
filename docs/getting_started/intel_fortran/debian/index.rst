@@ -15,7 +15,9 @@ The following packages must be installed first:
 - perl
 - wget
 - gnupg
-- intel-fortran-essentials
+- intel-oneapi-compiler-fortran
+- intel-oneapi-mpi
+- intel-oneapi-mpi-devel
 
 These packages can be installed using the package manager ``apt``.
 
@@ -37,7 +39,7 @@ followed by
 
 The Linux flavors Debian, Ubuntu and Mint have ``perl`` installed by default.
 
-The final step is to install the Intel Fortran Essentials package which also includes the MPI libraries. First, set up the Intel repository
+The final step is to install the Intel Fortran Compiler and the Intel MPI Library. First, set up the Intel repository
 by downloading the key to system keyring:
 
 .. code-block:: bash
@@ -57,18 +59,11 @@ Next, update the repository index:
 
    sudo apt update
 
-Finally, install the package with the following command:
+Finally, install the required Intel packages with the following command:
 
 .. code-block:: bash
 
-   sudo apt -y install intel-fortran-essentials
-
-Make sure that we are going to use the correct version 2025.3:
-
-.. code-block:: bash
-
-   sudo rm /opt/intel/oneapi/compiler/latest
-   sudo ln -s /opt/intel/oneapi/compiler/2025.3 /opt/intel/oneapi/compiler/latest
+   sudo apt -y install intel-oneapi-compiler-fortran intel-oneapi-mpi intel-oneapi-mpi-devel
 
 Let your OS system know where to find the compilers and libraries:
 
@@ -171,8 +166,7 @@ building with MPI support
 The SWAN source code also supports memory-distributed parallelism for high performance computing applications.
 A message passing approach is employed based on the Message Passing Interface (MPI) standard that enables communication between independent processors.
 
-The Intel Fortran Essentials package also contains the Intel MPI Library.
-This can be checked with the following command:
+Let us check the installation of Intel MPI first:
 
 .. code-block:: bash
 
