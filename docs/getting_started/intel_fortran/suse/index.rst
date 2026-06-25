@@ -42,13 +42,13 @@ First, add the Intel oneAPI repository public key with the following commands:
    sudo rpm --import https://yum.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
    sudo zypper addrepo https://yum.repos.intel.com/oneapi oneAPI
 
-Finally, install the required Intel packages with the following command:
+Next, install the required Intel packages with the following command:
 
 .. code-block:: bash
 
    sudo zypper install -y intel-oneapi-compiler-fortran intel-oneapi-mpi intel-oneapi-mpi-devel
 
-Let your OS system know where to find the compilers and libraries:
+Finally. let your OS system know where to find the compilers and libraries:
 
 .. code-block:: bash
 
@@ -149,14 +149,13 @@ building with MPI support
 The SWAN source code also supports memory-distributed parallelism for high performance computing applications.
 A message passing approach is employed based on the Message Passing Interface (MPI) standard that enables communication between independent processors.
 
-The Intel Fortran Essentials package also contains the Intel MPI Library.
-This can be checked with the following command:
+Let us check the installation of Intel MPI first:
 
 .. code-block:: bash
 
    mpirun --version
 
-We proceed to build SWAN. First, we configure SWAN to be built with support for MPI, as follows
+If successful, then we proceed to build SWAN. First, we configure SWAN to be built with support for MPI, as follows
 
 .. code-block:: bash
 
