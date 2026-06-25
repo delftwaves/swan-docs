@@ -13,7 +13,9 @@ The following packages must be installed first:
 - ninja
 - git
 - perl
-- intel-fortran-essentials
+- intel-oneapi-compiler-fortran
+- intel-oneapi-mpi
+- intel-oneapi-mpi-devel
 
 These packages can be installed using the default package manager ``dnf``.
 
@@ -65,7 +67,7 @@ Install both ``git`` and ``perl`` in the following way:
 
    sudo dnf -y install git
 
-The final step is to install the Intel Fortran Essentials package which also includes the MPI libraries. First, create the repository file in the ``/temp`` folder:
+The final step is to install the Intel Fortran Compiler and the Intel MPI Library. First, create the repository file in the ``/tmp`` folder:
 
 .. code-block:: text
 
@@ -85,11 +87,11 @@ Next, move this repo file ``oneAPI.repo`` to the yum configuration folder ``/etc
 
    sudo mv /tmp/oneAPI.repo /etc/yum.repos.d
 
-Finally, install the package with the following command:
+Finally, install the required Intel packages with the following command:
 
 .. code-block:: bash
 
-   sudo dnf -y install intel-fortran-essentials
+   sudo dnf -y intel-oneapi-compiler-fortran intel-oneapi-mpi intel-oneapi-mpi-devel
 
 Let your OS system know where to find the compilers and libraries:
 
@@ -192,14 +194,13 @@ building with MPI support
 The SWAN source code also supports memory-distributed parallelism for high performance computing applications.
 A message passing approach is employed based on the Message Passing Interface (MPI) standard that enables communication between independent processors.
 
-The Intel Fortran Essentials package also contains the Intel MPI Library.
-This can be checked with the following command:
+Let us check the installation of Intel MPI first:
 
 .. code-block:: bash
 
    mpirun --version
 
-We proceed to build SWAN. First, we configure SWAN to be built with support for MPI, as follows
+If successful, then we proceed to build SWAN. First, we configure SWAN to be built with support for MPI, as follows
 
 .. code-block:: bash
 

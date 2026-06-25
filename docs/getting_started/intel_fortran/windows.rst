@@ -36,12 +36,12 @@ If each of the above package reports a version number, then the installation was
 
 In addition to these packages, ``git`` and ``curl`` must also be installed. For the installation, please refer to the official `Git for Windows website <https://gitforwindows.org>`_.
 
-The final step is to install the Intel Fortran Essentials package which also includes the MPI libraries. The installation method here is the
+The final step is to install the Intel Fortran Compiler. The installation method here is the
 offline installer. This installer can be downloaded by entering the following command in a Windows command prompt:
 
 .. code-block:: text
 
-   curl https://registrationcenter-download.intel.com/akdlm/IRC_NAS/33676fcf-14a3-4e96-a9b9-72976b1145d9/intel-fortran-essentials-2025.3.1.25_offline.exe --output intel-fortran-essentials-2025.3.1.25_offline.exe
+   curl https://registrationcenter-download.intel.com/akdlm/IRC_NAS/9af38d13-867b-45af-a950-0b42d9bac1ae/intel-fortran-compiler-2026.0.0.566_offline.exe
 
 For a proper installation the Build Tools for Visual Studio is required. Download this VS Build Tools installer:
 
@@ -63,19 +63,19 @@ This might take a while. After completing installation of VS Build Tools, set th
 
 .. warning::
 
-   Depending on the installed version (here: Build Tools for Visual Studio 2026), the path above may be different. Check where the BuildTools folder is located and adjust the path if necessary.
+   Depending on the installed version (here: Build Tools for Visual Studio 2026, v18), the path above may be different. Check where the BuildTools folder is located and adjust the path if necessary.
 
-Next, run the Intel Fortran Essentials installer:
+Next, run the Intel Fortran Compiler installer:
 
 .. code-block:: text
 
-   intel-fortran-essentials-2025.3.1.25_offline.exe
+   intel-fortran-compiler-2026.0.0.566_offline.exe
 
 Follow the instruction steps to complete the successful installation. This might take a while.
 
 .. note::
 
-   This installs version 2025.3.1 of Intel Fortran and is not necessarily the latest version.
+   This installs version 2026.0.0 of Intel Fortran Compiler and is not necessarily the latest version.
    Check this `page <https://www.intel.com/content/www/us/en/developer/tools/oneapi/fortran-compiler-download.html?operatingsystem=windows&distribution-windows=offline>`_
    to get the latest version.
 
@@ -162,14 +162,25 @@ building with MPI support
 The SWAN source code also supports memory-distributed parallelism for high performance computing applications.
 A message passing approach is employed based on the Message Passing Interface (MPI) standard that enables communication between independent processors.
 
-The Intel Fortran Essentials package also contains the Intel MPI Library.
-This can be checked with the following command inserted in the :ref:`Intel oneAPI command prompt <ioap>`:
+First, download the offline installer of `Intel MPI Library <https://www.intel.com/content/www/us/en/developer/tools/oneapi/mpi-library-download.html?operatingsystem=windows&distribution-windows=offline>`_:
+
+.. code-block:: text
+
+   curl https://registrationcenter-download.intel.com/akdlm/IRC_NAS/8fd05348-8fd1-40e4-ba04-35bdb2ae9252/intel-mpi-2021.18.0.742_offline.exe
+
+Next, run the install script:
+
+.. code-block:: text
+
+   intel-mpi-2021.18.0.742_offline.exe
+
+Finally, let us check the installation of Intel MPI first with the following command inserted in the :ref:`Intel oneAPI command prompt <ioap>`:
 
 .. code-block:: text
 
    mpiexec --version
 
-We proceed to build SWAN. First, we configure SWAN to be built with support for MPI, as follows
+If successful, then we proceed to build SWAN. First, we configure SWAN to be built with support for MPI, as follows
 
 .. code-block:: text
 

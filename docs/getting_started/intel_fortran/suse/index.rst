@@ -12,8 +12,11 @@ The following packages must be installed first:
 - cmake
 - ninja
 - git
+- curl
 - perl
-- intel-fortran-essentials
+- intel-oneapi-compiler-fortran
+- intel-oneapi-mpi
+- intel-oneapi-mpi-devel
 
 These packages can be installed using the package manager ``zypper``.
 
@@ -27,49 +30,23 @@ followed by
 
 .. code-block:: bash
 
-   sudo zypper install -y gcc cmake ninja git
+   sudo zypper install -y gcc cmake ninja git curl
 
 The package ``perl`` is installed by default.
 
-The final step is to install the Intel Fortran Essentials package which also includes the MPI libraries.
-First, add the Intel oneAPI repository public key with the following command:
+The final step is to install the Intel Fortran Compiler and the Intel MPI Library.
+First, add the Intel oneAPI repository public key with the following commands:
 
 .. code-block:: bash
 
+   sudo rpm --import https://yum.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
    sudo zypper addrepo https://yum.repos.intel.com/oneapi oneAPI
 
-By adding this new repository, ``zypper`` automatically imports the public repo key. For some cases ``rpm`` might require explicit key import by:
+Finally, install the required Intel packages with the following command:
 
 .. code-block:: bash
 
-   rpm --import https://yum.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
-
-Finally, install the package with the following command:
-
-.. code-block:: bash
-
-   sudo zypper install -y intel-fortran-essentials
-
-.. important::
-
-   If the above installation method does not work or fails, there is the option to use the offline installer.
-   This installer can be downloaded by entering the following command:
-
-   .. code-block:: bash
-
-      wget https://registrationcenter-download.intel.com/akdlm/IRC_NAS/ce0f9b00-4780-483f-bc09-96d6fb4467ca/intel-fortran-essentials-2025.3.1.26_offline.sh
-
-   Then run the installation script as follows:
-
-   .. code-block:: bash
-
-      sudo sh ./intel-fortran-essentials-2025.3.1.26_offline.sh -a --silent --cli --eula accept
-
-   .. note::
-
-      This installs version 2025.3.1 of Intel Fortran and is not necessarily the latest version.
-      Check this `page <https://www.intel.com/content/www/us/en/developer/tools/oneapi/fortran-compiler-download.html?operatingsystem=linux&distribution-linux=offline>`_
-      to get the latest version.
+   sudo zypper install -y intel-oneapi-compiler-fortran intel-oneapi-mpi intel-oneapi-mpi-devel
 
 Let your OS system know where to find the compilers and libraries:
 
