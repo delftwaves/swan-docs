@@ -174,7 +174,7 @@ Next, run the install script:
 
    intel-mpi-2021.18.0.742_offline.exe
 
-Finally, let us check the installation of Intel MPI first with the following command inserted in the :ref:`Intel oneAPI command prompt <ioap>`:
+Finally, let us check the installation of Intel MPI with the following command inserted in the :ref:`Intel oneAPI command prompt <ioap>`:
 
 .. code-block:: text
 
