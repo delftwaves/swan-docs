@@ -145,6 +145,7 @@ If desired, the build can be configured by passing one or more options below to 
     ===================  ====================================================================================
     ``fc=<compiler>``    the Fortran90 compiler to use [default is determined by ``CMake``]
     ``mpi=on``           enable build of SWAN with MPI [``off`` by default]
+    ``metis=on``         enable build of SWAN with Metis [``off`` by default]
     ``prefix=<folder>``  set the installation folder [``%LocalAppData%\Programs\wavemodels\swan`` by default]
     ===================  ====================================================================================
 
@@ -155,6 +156,8 @@ For example, the following command
    gmake config prefix=C:\Program Files\swan
 
 will configure SWAN to be installed at ``C:\Program Files\swan``.
+
+.. _bmpiwi:
 
 building with MPI support
 -------------------------
@@ -201,6 +204,47 @@ Finally, to install SWAN, run the following command
    gmake install
 
 SWAN is now ready for high performance computing.
+
+building with Metis support
+---------------------------
+
+SWAN can be compiled with support for Metis to partition an unstructured mesh so that simulations can be carried out on distributed-memory machines.
+For this, an MPI implementation is still required, click :ref:`here <bmpiwi>` for details.
+
+The actual mesh partitioning implemented in SWAN is the multilevel k-way method
+as explained in the `Metis manual <https://github.com/KarypisLab/METIS/tree/master/manual>`_.
+
+For a proper building, the Metis software package must be installed first on your Windows machine.
+
+Open an :ref:`Intel oneAPI command prompt <ioap>`, navigate to your SWAN folder, copy the command below, right-click in the prompt window to paste and press Enter.
+
+.. code-block:: text
+
+   git clone https://github.com/scivision/METIS.git && cd METIS
+
+Next, build Metis libraries:
+
+.. code-block:: text
+
+   cmake --workflow default && cd ..
+
+After Metis has been build we continue with the build of SWAN. First, configure SWAN:
+
+.. code-block:: text
+
+   gmake config fc=mpiifx.bat mpi=on metis=on
+
+Next, build SWAN:
+
+.. code-block:: text
+
+   gmake
+
+And finally, install SWAN:
+
+.. code-block:: text
+
+   gmake install
 
 clean up
 --------
