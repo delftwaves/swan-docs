@@ -15,7 +15,7 @@ while for Linux and Mac users, type in an opened terminal the following command:
 
 .. important::
 
-   - Open an :ref:`Intel oneAPI command prompt <ioap>` in Windows if you have installed the :ref:`Intel Fortran Essentials package <intelwin>`.
+   - Open an :ref:`Intel oneAPI command prompt <ioap>` in Windows if you have installed the :ref:`Intel Fortran Compiler <intelwin>`.
    - In case of Linux/macOS, the script ``swanrun`` needs to be made executable first, as follows::
 
        chmod +rx swanrun

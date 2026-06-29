@@ -48,7 +48,7 @@ Next, install the required Intel packages with the following command:
 
    sudo zypper install -y intel-oneapi-compiler-fortran intel-oneapi-mpi intel-oneapi-mpi-devel
 
-Finally. let your OS system know where to find the compilers and libraries:
+Finally, let your OS system know where to find the compilers and libraries:
 
 .. code-block:: bash
 

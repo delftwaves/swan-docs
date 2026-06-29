@@ -41,7 +41,7 @@ offline installer. This installer can be downloaded by entering the following co
 
 .. code-block:: text
 
-   curl https://registrationcenter-download.intel.com/akdlm/IRC_NAS/9af38d13-867b-45af-a950-0b42d9bac1ae/intel-fortran-compiler-2026.0.0.566_offline.exe
+   curl https://registrationcenter-download.intel.com/akdlm/IRC_NAS/9af38d13-867b-45af-a950-0b42d9bac1ae/intel-fortran-compiler-2026.0.0.566_offline.exe --output ifc2026_offline.exe
 
 For a proper installation the Build Tools for Visual Studio is required. Download this VS Build Tools installer:
 
@@ -69,7 +69,7 @@ Next, run the Intel Fortran Compiler installer:
 
 .. code-block:: text
 
-   intel-fortran-compiler-2026.0.0.566_offline.exe
+   ifc2026_offline.exe
 
 Follow the instruction steps to complete the successful installation. This might take a while.
 
@@ -86,7 +86,7 @@ Finally, we check whether the installation was successful.
 With the next two steps, an **Intel oneAPI terminal** will be started, after which the necessary environment variables will be set.
 
 - Click on the *Start* button to open the Start menu.
-- Type ``intel oneapi`` in the search box at the top.
+- Type ``intel oneapi`` in the search box at the top and click on the app.
 
 Type ``ifx --version`` to verify Intel Fortran Compiler was installed.
 
@@ -166,15 +166,17 @@ First, download the offline installer of `Intel MPI Library <https://www.intel.c
 
 .. code-block:: text
 
-   curl https://registrationcenter-download.intel.com/akdlm/IRC_NAS/8fd05348-8fd1-40e4-ba04-35bdb2ae9252/intel-mpi-2021.18.0.742_offline.exe
+   curl https://registrationcenter-download.intel.com/akdlm/IRC_NAS/8fd05348-8fd1-40e4-ba04-35bdb2ae9252/intel-mpi-2021.18.0.742_offline.exe --output impi2021_offline.exe
 
 Next, run the install script:
 
 .. code-block:: text
 
-   intel-mpi-2021.18.0.742_offline.exe
+   impi2021_offline.exe
 
-Finally, let us check the installation of Intel MPI with the following command inserted in the :ref:`Intel oneAPI command prompt <ioap>`:
+and follow the instruction steps to complete the installation.
+
+Finally, let us check the installation of Intel MPI Library with the following command inserted in the :ref:`Intel oneAPI command prompt <ioap>`:
 
 .. code-block:: text
 
