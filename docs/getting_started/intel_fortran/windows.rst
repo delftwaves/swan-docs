@@ -216,20 +216,27 @@ as explained in the `Metis manual <https://github.com/KarypisLab/METIS/tree/mast
 
 For a proper building, the Metis software package must be installed first on your Windows machine.
 
-First, open an :ref:`Intel oneAPI command prompt <ioap>` and then navigate to your SWAN source directory.
+First, open an :ref:`Intel oneAPI command prompt <ioap>` and then navigate to your Downloads folder.
 Next, copy the command below, right-click in the prompt window to paste and press Enter.
 
 .. code-block:: text
 
    git clone https://github.com/scivision/METIS.git && cd METIS
 
-Next, build the Metis libraries in the following way:
+Finally, build and install the Metis programs and libraries as follows:
 
 .. code-block:: text
 
-   cmake --workflow --preset default
+   mkdir build && cd build
+   cmake .. -G Ninja
+   cmake --build . --config Release
+   cmake --install . --prefix "C:\Program Files\metis" --config Release
 
-After Metis has been build we continue with the build of SWAN. At the top of SWAN source directory configure SWAN:
+.. note::
+
+   The Metis package is installed at folder ``C:\Program Files\metis``. This location is required for a correct installation of SWAN as described below.
+
+After Metis has been installed we continue with the build of SWAN. At the top of SWAN source directory SWAN needs to be configured in the following way:
 
 .. code-block:: text
 
