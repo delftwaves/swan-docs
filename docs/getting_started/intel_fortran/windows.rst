@@ -234,7 +234,8 @@ Finally, build and install the Metis programs and libraries as follows:
 
 .. note::
 
-   The Metis package is installed at folder ``C:\Program Files\metis``. This location is required for a correct installation of SWAN as described below.
+   - Make sure that VS Build Tools is already installed before installing Metis.
+   - The Metis package is installed at folder ``C:\Program Files\metis``. This location is required for a correct installation of SWAN as described below.
 
 After Metis has been installed we continue with the build of SWAN. At the top of SWAN source directory SWAN needs to be configured in the following way:
 
